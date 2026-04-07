@@ -1,194 +1,379 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pasindu & Isuni | Ashen & Chathuni | A Twin Wedding Celebration</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <style>
-        /* Color Palette */
-        :root {
-            --bg-color: #fdfaf5; /* Creamy White */
-            --primary-gold: #c69c6d; /* Deep Gold */
-            --accent-gold: #e2c092; /* Light Gold */
-            --text-main: #3d3d3d; /* Dark Gray */
-            --text-heading: #1a1a1a; /* Almost Black */
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pasindu & Isuni | Ashen & Chathuni — A Twin Wedding Celebration</title>
+<link href=https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{min-height:100%;width:100%}
+body{
+  min-height:100vh;
+  background:linear-gradient(135deg,#1a0a00 0%,#2d1200 30%,#1a0800 60%,#0d0400 100%);
+  background-attachment:fixed;
+  display:flex;justify-content:center;align-items:flex-start;
+  padding:40px 15px 60px;
+  font-family:'Montserrat',sans-serif;
+}
 
-        body {
-            margin: 0; background-color: var(--bg-color);
-            font-family: 'Poppins', sans-serif; color: var(--text-main);
-            display: flex; justify-content: center; align-items: center; min-height: 100vh;
-            /* Optional: Add a subtle watercolor background image */
-            /* background-image: url('URL_OF_WATERCOLOR_IMAGE.png'); background-size: cover; background-attachment: fixed; */
-        }
+/* ─── Stars ─── */
+.stars{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.star{position:absolute;border-radius:50%;animation:twinkle var(--d,3s) ease-in-out infinite alternate;opacity:0}
+@keyframes twinkle{0%{opacity:0;transform:scale(0.8)}100%{opacity:var(--o,0.8);transform:scale(1)}}
 
-        /* The Main Container (Card) */
-        .card {
-            width: 88%; max-width: 500px;
-            background: white;
-            padding: 60px 25px;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(198, 156, 109, 0.15); /* Soft Gold Shadow */
-            border-radius: 15px;
-            position: relative;
-            overflow: hidden;
-            box-sizing: border-box; /* Ensures padding doesn't affect width */
-        }
+/* ─── Outer envelope / card ─── */
+.envelope{position:relative;width:100%;max-width:560px;z-index:10;animation:riseIn 1.2s cubic-bezier(0.22,1,0.36,1) both}
+@keyframes riseIn{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
 
-        /* Premium Border Detail */
-        .card::before {
-            content: ''; position: absolute;
-            top: 20px; bottom: 20px; left: 20px; right: 20px;
-            border: 2px solid var(--primary-gold);
-            border-image: linear-gradient(to right, var(--accent-gold), var(--primary-gold), var(--accent-gold)) 1;
-            z-index: 1; pointer-events: none;
-        }
+.card-outer{
+  background:linear-gradient(160deg,#1f0d00 0%,#2e1500 40%,#1a0a00 100%);
+  border:1px solid #8b5a1a;
+  border-radius:4px;
+  padding:4px;
+  box-shadow:0 0 60px rgba(198,140,50,0.35),0 0 120px rgba(198,140,50,0.12),inset 0 0 30px rgba(0,0,0,0.5);
+}
+.card-mid{border:1px solid rgba(198,140,50,0.3);border-radius:3px;padding:3px}
+.card{
+  background:linear-gradient(170deg,#fdfaf2 0%,#faf6e8 30%,#f5edd6 60%,#faf6e8 100%);
+  border-radius:2px;
+  padding:55px 38px 50px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+  background-image:
+    radial-gradient(ellipse at 20% 20%,rgba(198,156,80,0.07) 0%,transparent 50%),
+    radial-gradient(ellipse at 80% 80%,rgba(180,120,40,0.07) 0%,transparent 50%);
+  pointer-events:none;
+}
 
-        /* Top Accent: Lotus Icon */
-        .lotus-wrapper { display: flex; justify-content: center; margin-bottom: 25px; }
-        .lotus-wrapper svg { width: 50px; fill: var(--primary-gold); }
+/* ─── Corners ─── */
+.corner{position:absolute;width:72px;height:72px;opacity:0.65}
+.corner svg{width:100%;height:100%}
+.tl{top:8px;left:8px}
+.tr{top:8px;right:8px;transform:scaleX(-1)}
+.bl{bottom:8px;left:8px;transform:scaleY(-1)}
+.br{bottom:8px;right:8px;transform:scale(-1)}
+.inner-border{
+  position:absolute;top:18px;bottom:18px;left:18px;right:18px;
+  border:1px solid rgba(180,130,50,0.25);border-radius:1px;pointer-events:none;
+}
 
-        /* Welcome Section */
-        .welcome-text { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-main); }
-        .guest-name { font-family: 'Cinzel Decorative', cursive; font-size: 2rem; color: var(--primary-gold); margin: 15px 0 30px 0; font-weight: bold; }
-        .invitation-body { font-size: 1rem; color: #555; line-height: 1.6; max-width: 80%; margin: 0 auto; }
+/* ─── Particles ─── */
+.particles{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden}
+.particle{position:absolute;border-radius:50%;animation:floatUp var(--dur,6s) ease-in-out infinite;opacity:0}
+@keyframes floatUp{
+  0%{opacity:0;transform:translateY(0) rotate(0deg)}
+  20%{opacity:0.5}
+  80%{opacity:0.2}
+  100%{opacity:0;transform:translateY(-220px) rotate(360deg)}
+}
 
-        /* The Couples Section */
-        .couples { margin: 40px 0; padding: 25px 0; position: relative; }
-        .couple-group { margin-bottom: 15px; }
-        .couple-name { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 600; color: var(--text-heading); }
-        .and-symbol { font-size: 1rem; color: #777; margin: 0 10px; }
-        .couples-divider { width: 40px; height: 1px; background: #eee; margin: 10px auto; }
-        
-        /* The "Ampersand" between pairs */
-        .major-amp { font-family: 'Cinzel Decorative', cursive; font-size: 3rem; color: var(--primary-gold); opacity: 0.3; }
+/* ─── Rotating lotus ─── */
+.lotus-petals{animation:spin 35s linear infinite;transform-origin:40px 40px}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.mandala-top{display:flex;justify-content:center;margin-bottom:22px;animation:fadeDown 1.2s 0.2s ease both;opacity:0}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
 
-        /* Event Details */
-        .event-details { border-top: 1px solid #f2f2f2; padding-top: 30px; margin-top: 20px; }
-        .detail-item { margin-bottom: 18px; font-size: 1rem; line-height: 1.6; }
-        .detail-item strong { color: var(--text-heading); display: block; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 4px; }
-        .time { font-weight: bold; font-size: 1.3rem; }
+/* ─── Typography ─── */
+.section-label{
+  font-family:'Cormorant Garamond',serif;
+  font-size:0.75rem;letter-spacing:5px;text-transform:uppercase;
+  color:#8b6020;margin-bottom:10px;
+  animation:fadeUp 1s 0.4s ease both;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
-        /* Interactivity / Buttons */
-        .buttons-group { margin-top: 40px; display: flex; flex-direction: column; gap: 15px; align-items: center; }
-        
-        /* Stylized "Call-to-Action" Buttons */
-        .btn {
-            display: inline-block; padding: 14px 40px;
-            font-size: 0.95rem; font-weight: 600; text-transform: uppercase; text-decoration: none;
-            letter-spacing: 1px; border-radius: 30px;
-            transition: all 0.4s ease-in-out;
-            width: 70%; text-align: center; cursor: pointer;
-        }
-        
-        /* Primary CTA: Location */
-        .btn-location {
-            background: linear-gradient(135deg, var(--primary-gold), var(--accent-gold));
-            color: white; border: none; box-shadow: 0 4px 15px rgba(198, 156, 109, 0.4);
-        }
-        .btn-location:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(198, 156, 109, 0.6); }
+/* ─── Ornamental divider ─── */
+.divider-ornament{display:flex;align-items:center;justify-content:center;gap:10px;margin:12px 0}
+.divider-ornament .line{flex:1;max-width:90px;height:1px;background:linear-gradient(to right,transparent,#c8922a,transparent)}
+.divider-ornament .diamond{width:6px;height:6px;background:#c8922a;transform:rotate(45deg)}
 
-        /* Secondary CTA: RSVP */
-        .btn-rsvp {
-            background: transparent; color: var(--primary-gold);
-            border: 1px solid var(--primary-gold);
-        }
-        .btn-rsvp:hover { background: #fffcf0; border-color: var(--accent-gold); color: var(--accent-gold); }
+/* ─── Guest name ─── */
+.guest-block{margin:14px 0 22px;animation:fadeUp 1s 0.6s ease both}
+.guest-label{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:#6b4e10;margin-bottom:4px}
+.guest-name{font-family:'Cinzel Decorative',cursive;font-size:1.9rem;color:#8b5a0a;line-height:1.25}
 
-        /* Simple Stylized Footer */
-        .contact { margin-top: 40px; border-top: 1px solid #f2f2f2; padding-top: 20px; color: #888; font-size: 0.8rem; }
-        .contact p { margin: 5px 0; }
-        .contact strong { color: #666; font-size: 0.85rem; }
+/* ─── Invite copy ─── */
+.invite-text{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:1.05rem;color:#5a4020;line-height:1.9;
+  margin:0 auto 22px;max-width:360px;
+  animation:fadeUp 1s 0.8s ease both;
+}
 
-        /* --- MOBILE RESPONSIVENESS (Optimization) --- */
-        @media (max-width: 600px) {
-            .card { padding: 50px 20px; width: 92%; }
-            .guest-name { font-size: 1.7rem; }
-            .couple-name { font-size: 1.9rem; }
-            .major-amp { font-size: 2.5rem; }
-            .btn { width: 85%; }
-        }
-    </style>
+/* ─── Couples ─── */
+.couples-section{margin:5px 0 18px;animation:fadeUp 1s 1s ease both}
+.couple-wrap{margin:8px 0}
+.couple-names{font-family:'Cinzel Decorative',cursive;font-size:1.4rem;color:#2a1a00;letter-spacing:0.5px}
+.couple-names .amp{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:#c8922a;font-style:italic;font-weight:300;margin:0 8px;vertical-align:middle}
+.major-divider{display:flex;justify-content:center;margin:6px 0}
+.major-amp{font-family:'Cormorant Garamond',serif;font-size:3rem;color:#c8922a;font-style:italic;font-weight:300;line-height:1;opacity:0.85;margin:0 20px}
+
+/* ─── Event details ─── */
+.event-section{
+  border-top:1px solid rgba(180,130,50,0.2);
+  border-bottom:1px solid rgba(180,130,50,0.2);
+  padding:22px 0;margin:15px 0 20px;
+  animation:fadeUp 1s 1.2s ease both;
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;
+}
+.event-item{padding:10px 5px}
+.event-item:nth-child(2){border-left:1px solid rgba(180,130,50,0.2);border-right:1px solid rgba(180,130,50,0.2)}
+.event-label{font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:#8b6020;margin-bottom:7px}
+.event-value{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:#2a1a00;font-weight:600;line-height:1.3}
+.event-sub{font-family:'Cormorant Garamond',serif;font-size:0.85rem;color:#6b4e10;font-style:italic;margin-top:3px}
+
+/* ─── Buttons ─── */
+.buttons-section{display:flex;flex-direction:column;gap:13px;align-items:center;margin:15px 0;animation:fadeUp 1s 1.4s ease both}
+.btn{
+  display:inline-block;padding:13px 38px;
+  font-size:0.7rem;letter-spacing:2.5px;text-transform:uppercase;
+  text-decoration:none;cursor:pointer;transition:all 0.4s ease;
+  width:78%;font-family:'Montserrat',sans-serif;font-weight:500;border-radius:0;
+}
+.btn-primary{
+  background:linear-gradient(135deg,#c8922a 0%,#e8b840 50%,#c8922a 100%);
+  background-size:200% auto;
+  color:#1a0800;border:none;
+  box-shadow:0 4px 22px rgba(200,146,42,0.4);
+  animation:shimmer 3s linear infinite;
+}
+@keyframes shimmer{0%{background-position:0% center}100%{background-position:200% center}}
+.btn-primary:hover{box-shadow:0 6px 30px rgba(200,146,42,0.65);transform:translateY(-2px)}
+.btn-secondary{background:transparent;color:#8b5a0a;border:1px solid rgba(200,146,42,0.6)}
+.btn-secondary:hover{background:rgba(200,146,42,0.07)}
+
+/* ─── Contact ─── */
+.contact-section{
+  margin-top:22px;padding-top:20px;
+  border-top:1px solid rgba(180,130,50,0.2);
+  animation:fadeUp 1s 1.6s ease both;
+}
+.contact-title{font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:#8b6020;margin-bottom:12px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.contact-item{
+  background:rgba(200,146,42,0.06);
+  border:1px solid rgba(200,146,42,0.15);
+  padding:12px 10px;border-radius:2px;
+}
+.contact-couple{font-family:'Cormorant Garamond',serif;font-size:0.88rem;color:#5a4020;margin-bottom:4px}
+.contact-num{font-size:0.78rem;color:#8b5a0a;font-weight:500;letter-spacing:1px}
+
+/* ─── Responsive ─── */
+@media(max-width:480px){
+  .card{padding:45px 22px 40px}
+  .guest-name{font-size:1.5rem}
+  .couple-names{font-size:1.15rem}
+  .major-amp{font-size:2.4rem}
+  .btn{width:90%;padding:12px 20px}
+  .event-section{grid-template-columns:1fr;gap:0}
+  .event-item:nth-child(2){border:none;border-top:1px solid rgba(180,130,50,0.15);border-bottom:1px solid rgba(180,130,50,0.15)}
+  .contact-grid{grid-template-columns:1fr}
+}
+</style>
 </head>
 <body>
 
-    <div class="card animate__animated animate__zoomIn animate__slow">
-        
-        <div class="lotus-wrapper animate__animated animate__fadeInDown animate__delay-1s">
-            <svg viewBox="0 0 128 128" xml:space="preserve"><path d="M64 0c21.2 0 38.4 17.2 38.4 38.4 0 13.3-6.8 25.1-17.2 32 10.4 6.9 17.2 18.7 17.2 32C102.4 110.8 85.2 128 64 128S25.6 110.8 25.6 91.2c0-13.3 6.8-25.1 17.2-32C32.4 52.3 25.6 40.5 25.6 27.2 25.6 13.9 42.8 13.9 64 13.9z"/><path d="M64 4c20.3 0 36.8 16.5 36.8 36.8 0 12.8-6.5 24.1-16.5 30.7 10 6.6 16.5 17.9 16.5 30.7C100.8 108.3 84.3 124 64 124S27.2 108.3 27.2 88.1c0-12.8 6.5-24.1 16.5-30.7-10-6.6-16.5-17.9-16.5-30.7C27.2 16.5 43.7 4 64 4z" fill="#FFFFFF"/></svg>
+<div class="stars" id="stars"></div>
+
+<div class="envelope">
+  <div class="card-outer">
+    <div class="card-mid">
+      <div class="card">
+
+        <div class="particles" id="particles"></div>
+
+        <!-- Corner ornaments -->
+        <div class="corner tl">
+          <svg viewBox="0 0 72 72">
+            <path d="M5,67 L5,5 L67,5" fill="none" stroke="#c8922a" stroke-width="1.5"/>
+            <path d="M5,40 C5,25 22,10 38,5" fill="none" stroke="#c8922a" stroke-width="0.8" opacity="0.5"/>
+            <circle cx="5" cy="5" r="3" fill="#c8922a"/>
+            <circle cx="30" cy="5" r="1.5" fill="#c8922a" opacity="0.5"/>
+            <circle cx="5" cy="30" r="1.5" fill="#c8922a" opacity="0.5"/>
+            <path d="M14,5 L14,14 L5,14" fill="none" stroke="#c8922a" stroke-width="0.6" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="corner tr">
+          <svg viewBox="0 0 72 72">
+            <path d="M5,67 L5,5 L67,5" fill="none" stroke="#c8922a" stroke-width="1.5"/>
+            <path d="M5,40 C5,25 22,10 38,5" fill="none" stroke="#c8922a" stroke-width="0.8" opacity="0.5"/>
+            <circle cx="5" cy="5" r="3" fill="#c8922a"/>
+            <circle cx="30" cy="5" r="1.5" fill="#c8922a" opacity="0.5"/>
+            <circle cx="5" cy="30" r="1.5" fill="#c8922a" opacity="0.5"/>
+            <path d="M14,5 L14,14 L5,14" fill="none" stroke="#c8922a" stroke-width="0.6" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="corner bl">
+          <svg viewBox="0 0 72 72">
+            <path d="M5,67 L5,5 L67,5" fill="none" stroke="#c8922a" stroke-width="1.5"/>
+            <path d="M5,40 C5,25 22,10 38,5" fill="none" stroke="#c8922a" stroke-width="0.8" opacity="0.5"/>
+            <circle cx="5" cy="5" r="3" fill="#c8922a"/>
+            <circle cx="30" cy="5" r="1.5" fill="#c8922a" opacity="0.5"/>
+            <circle cx="5" cy="30" r="1.5" fill="#c8922a" opacity="0.5"/>
+            <path d="M14,5 L14,14 L5,14" fill="none" stroke="#c8922a" stroke-width="0.6" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="corner br">
+          <svg viewBox="0 0 72 72">
+            <path d="M5,67 L5,5 L67,5" fill="none" stroke="#c8922a" stroke-width="1.5"/>
+            <path d="M5,40 C5,25 22,10 38,5" fill="none" stroke="#c8922a" stroke-width="0.8" opacity="0.5"/>
+            <circle cx="5" cy="5" r="3" fill="#c8922a"/>
+            <circle cx="30" cy="5" r="1.5" fill="#c8922a" opacity="0.5"/>
+            <circle cx="5" cy="30" r="1.5" fill="#c8922a" opacity="0.5"/>
+            <path d="M14,5 L14,14 L5,14" fill="none" stroke="#c8922a" stroke-width="0.6" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="inner-border"></div>
+
+        <!-- Rotating lotus mandala -->
+        <div class="mandala-top">
+          <svg width="82" height="82" viewBox="0 0 80 80">
+            <g class="lotus-petals">
+              <ellipse cx="40" cy="22" rx="5.5" ry="15" fill="#c8922a" opacity="0.75"/>
+              <ellipse cx="40" cy="22" rx="5.5" ry="15" fill="#c8922a" opacity="0.75" transform="rotate(45 40 40)"/>
+              <ellipse cx="40" cy="22" rx="5.5" ry="15" fill="#c8922a" opacity="0.75" transform="rotate(90 40 40)"/>
+              <ellipse cx="40" cy="22" rx="5.5" ry="15" fill="#c8922a" opacity="0.75" transform="rotate(135 40 40)"/>
+              <ellipse cx="40" cy="22" rx="5.5" ry="15" fill="#c8922a" opacity="0.75" transform="rotate(180 40 40)"/>
+              <ellipse cx="40" cy="22" rx="5.5" ry="15" fill="#c8922a" opacity="0.75" transform="rotate(225 40 40)"/>
+              <ellipse cx="40" cy="22" rx="5.5" ry="15" fill="#c8922a" opacity="0.75" transform="rotate(270 40 40)"/>
+              <ellipse cx="40" cy="22" rx="5.5" ry="15" fill="#c8922a" opacity="0.75" transform="rotate(315 40 40)"/>
+            </g>
+            <circle cx="40" cy="40" r="9" fill="#e8c05a"/>
+            <circle cx="40" cy="40" r="5" fill="#c8922a"/>
+            <circle cx="40" cy="40" r="2.5" fill="#fae080"/>
+          </svg>
         </div>
 
-        <div class="welcome-text animate__animated animate__fadeInDown animate__delay-1s">A Celebration of Love</div>
-        
-        <div class="guest-name animate__animated animate__fadeInUp animate__delay-1s" id="guestName">A Warm Welcome</div>
+        <div class="section-label">A Celebration of Love</div>
 
-        <div class="invitation-body animate__animated animate__fadeInUp animate__delay-1s">
-            We cordially invite you and your family to join us on this auspicious occasion of our twin wedding ceremony.
+        <div class="divider-ornament">
+          <div class="line"></div>
+          <div class="diamond"></div>
+          <div class="diamond" style="margin:0 4px"></div>
+          <div class="diamond"></div>
+          <div class="line"></div>
         </div>
 
-        <div class="couples animate__animated animate__fadeInUp animate__delay-2s">
-            
-            <div class="couple-group">
-                <span class="couple-name">Pasindu <span class="and-symbol">&</span> Isuni</span>
-                <div class="couples-divider"></div>
-            </div>
-
-            <div class="major-amp">&</div>
-
-            <div class="couple-group">
-                <span class="couple-name">Ashen <span class="and-symbol">&</span> Chathuni</span>
-                <div class="couples-divider"></div>
-            </div>
+        <div class="guest-block">
+          <div class="guest-label">With warm hearts, we welcome</div>
+          <div class="guest-name" id="guestName">Our Beloved Guests</div>
         </div>
 
-        <div class="event-details animate__animated animate__fadeInUp animate__delay-3s">
-            <div class="detail-item">
-                <strong>Venue</strong>
-                <span>Vinrich Lake Resort, Bolgoda</span>
-            </div>
-            
-            <div class="detail-item">
-                <strong>Poruwa Ceremony</strong>
-                <span class="time">9:48 AM</span>
-            </div>
+        <p class="invite-text">
+          You are joyfully invited to witness and celebrate the sacred union of two families joining as one — on this auspicious day of our twin wedding ceremony.
+        </p>
 
-            <div class="detail-item">
-                <strong>Date</strong>
-                <span>Thursday, 7th April 2026</span>
-            </div>
+        <div class="divider-ornament" style="margin-bottom:18px">
+          <div class="line"></div>
+          <svg width="16" height="16" viewBox="0 0 16 16" style="flex-shrink:0"><path d="M8 1L9.6 6H15L10.4 9.4 12 15 8 11.6 4 15 5.6 9.4 1 6H6.4Z" fill="#c8922a"/></svg>
+          <div class="line"></div>
         </div>
 
-        <div class="buttons-group animate__animated animate__fadeInUp animate__delay-3s">
-            <a href="https://maps.google.com/YOUR_LOCATION_LINK" class="btn btn-location" target="_blank">📍 View Location</a>
-            
+        <!-- Couples -->
+        <div class="couples-section">
+          <div class="couple-wrap">
+            <div class="couple-names">Pasindu <span class="amp">&amp;</span> Isuni</div>
+          </div>
+          <div class="major-divider">
+            <div class="divider-ornament" style="width:55%">
+              <div class="line"></div>
+              <span class="major-amp">&amp;</span>
+              <div class="line"></div>
             </div>
-
-        <div class="contact animate__animated animate__fadeInUp animate__delay-4s">
-            <p>If you need assistance:</p>
-            <p><strong>Pasindu & Isuni:</strong> 0710348109</p>
-            <p><strong>Ashen & Chathuni:</strong> 0714986214</p>
+          </div>
+          <div class="couple-wrap">
+            <div class="couple-names">Ashen <span class="amp">&amp;</span> Chathuni</div>
+          </div>
         </div>
 
+        <div class="divider-ornament" style="margin:16px 0">
+          <div class="line"></div>
+          <div class="diamond"></div>
+          <div class="line"></div>
+        </div>
+
+        <!-- Event details -->
+        <div class="event-section">
+          <div class="event-item">
+            <div class="event-label">Venue</div>
+            <div class="event-value">Vinrich Lake Resort</div>
+            <div class="event-sub">Bolgoda</div>
+          </div>
+          <div class="event-item">
+            <div class="event-label">Poruwa Ceremony</div>
+            <div class="event-value" style="font-size:1.5rem;color:#c8922a">9:48 AM</div>
+          </div>
+          <div class="event-item">
+            <div class="event-label">Date</div>
+            <div class="event-value">Thursday</div>
+            <div class="event-sub">17th June 2026</div>
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="buttons-section">
+          <a href=https://maps.google.com/YOUR_LOCATION_LINK class="btn btn-primary" target="_blank">📍 View Location</a>
+          <a href="#rsvp" class="btn btn-secondary">Kindly RSVP</a>
+        </div>
+
+        <!-- Contact -->
+        <div class="contact-section">
+          <div class="contact-title">For assistance, please contact</div>
+          <div class="contact-grid">
+            <div class="contact-item">
+              <div class="contact-couple">Pasindu &amp; Isuni</div>
+              <div class="contact-num">071 034 8109</div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-couple">Ashen &amp; Chathuni</div>
+              <div class="contact-num">071 498 6214</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
+  </div>
+</div>
 
-    <script>
-        window.addEventListener('load', function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const rawName = urlParams.get('guest');
-            if (rawName) {
-                // Decodes URL characters like %20 and sanitizes HTML
-                const cleanName = decodeURIComponent(rawName).replace(/</g, "&lt;").replace(/>/g, "&gt;");
-                const guestNameElement = document.getElementById('guestName');
-                guestNameElement.innerText = "Dear " + cleanName + ",";
-                // Optionally make the font size smaller for very long names
-                if (cleanName.length > 20) {
-                    guestNameElement.style.fontSize = '1.4rem';
-                }
-            }
-        });
-    </script>
+<script>
+// Personalised guest name via URL param  e.g.  ?guest=Kumara%20Family
+window.addEventListener('load', function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const rawName = urlParams.get('guest');
+  if (rawName) {
+    const cleanName = decodeURIComponent(rawName).replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    const el = document.getElementById('guestName');
+    el.textContent = "Dear " + cleanName + ",";
+    if (cleanName.length > 22) el.style.fontSize = '1.3rem';
+  }
+});
 
+// Animated starfield
+const starsEl = document.getElementById('stars');
+for (let i = 0; i < 90; i++) {
+  const s = document.createElement('div');
+  s.className = 'star';
+  const size = Math.random() * 2.5 + 0.8;
+  s.style.cssText = `width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;background:#e8d080;--d:${2+Math.random()*5}s;--o:${0.3+Math.random()*0.7};animation-delay:${Math.random()*6}s`;
+  starsEl.appendChild(s);
+}
+
+// Floating gold particles on the card
+const colors = ['#c8922a','#e8b840','#d4a030','#f0c860','#e8d080'];
+const particlesEl = document.getElementById('particles');
+for (let i = 0; i < 22; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  const size = 2 + Math.random() * 3;
+  p.style.cssText = `left:${Math.random()*100}%;top:${50+Math.random()*50}%;background:${colors[Math.floor(Math.random()*colors.length)]};--dur:${5+Math.random()*7}s;animation-delay:${Math.random()*10}s;width:${size}px;height:${size}px`;
+  particlesEl.appendChild(p);
+}
+</script>
 </body>
 </html>
