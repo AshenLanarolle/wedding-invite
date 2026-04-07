@@ -3,75 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Invitation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <title>Pasindu & Isuni | Ashen & Chathuni | A Twin Wedding Celebration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
+        /* Color Palette */
         :root {
-            --gold: #D4AF37;
-            --cream: #FFFCF5;
-            --text: #333;
+            --bg-color: #fdfaf5; /* Creamy White */
+            --primary-gold: #c69c6d; /* Deep Gold */
+            --accent-gold: #e2c092; /* Light Gold */
+            --text-main: #3d3d3d; /* Dark Gray */
+            --text-heading: #1a1a1a; /* Almost Black */
         }
+
         body {
-            margin: 0; background-color: var(--cream);
-            font-family: 'Poppins', sans-serif; color: var(--text);
+            margin: 0; background-color: var(--bg-color);
+            font-family: 'Poppins', sans-serif; color: var(--text-main);
             display: flex; justify-content: center; align-items: center; min-height: 100vh;
+            /* Optional: Add a subtle watercolor background image */
+            /* background-image: url('URL_OF_WATERCOLOR_IMAGE.png'); background-size: cover; background-attachment: fixed; */
         }
+
+        /* The Main Container (Card) */
         .card {
-            width: 90%; max-width: 500px; background: white;
-            padding: 40px 20px; border: 8px double var(--gold);
-            text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            position: relative; overflow: hidden;
+            width: 88%; max-width: 500px;
+            background: white;
+            padding: 60px 25px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(198, 156, 109, 0.15); /* Soft Gold Shadow */
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            box-sizing: border-box; /* Ensures padding doesn't affect width */
         }
-        h1 { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 2.2rem; margin-bottom: 10px; }
-        .guest-name { font-weight: bold; font-size: 1.2rem; color: #555; margin-bottom: 20px; }
-        .couples { margin: 30px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 20px 0; }
-        .couple-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); }
-        .details { margin: 20px 0; font-size: 0.9rem; line-height: 1.6; }
+
+        /* Premium Border Detail */
+        .card::before {
+            content: ''; position: absolute;
+            top: 20px; bottom: 20px; left: 20px; right: 20px;
+            border: 2px solid var(--primary-gold);
+            border-image: linear-gradient(to right, var(--accent-gold), var(--primary-gold), var(--accent-gold)) 1;
+            z-index: 1; pointer-events: none;
+        }
+
+        /* Top Accent: Lotus Icon */
+        .lotus-wrapper { display: flex; justify-content: center; margin-bottom: 25px; }
+        .lotus-wrapper svg { width: 50px; fill: var(--primary-gold); }
+
+        /* Welcome Section */
+        .welcome-text { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-main); }
+        .guest-name { font-family: 'Cinzel Decorative', cursive; font-size: 2rem; color: var(--primary-gold); margin: 15px 0 30px 0; font-weight: bold; }
+        .invitation-body { font-size: 1rem; color: #555; line-height: 1.6; max-width: 80%; margin: 0 auto; }
+
+        /* The Couples Section */
+        .couples { margin: 40px 0; padding: 25px 0; position: relative; }
+        .couple-group { margin-bottom: 15px; }
+        .couple-name { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 600; color: var(--text-heading); }
+        .and-symbol { font-size: 1rem; color: #777; margin: 0 10px; }
+        .couples-divider { width: 40px; height: 1px; background: #eee; margin: 10px auto; }
+        
+        /* The "Ampersand" between pairs */
+        .major-amp { font-family: 'Cinzel Decorative', cursive; font-size: 3rem; color: var(--primary-gold); opacity: 0.3; }
+
+        /* Event Details */
+        .event-details { border-top: 1px solid #f2f2f2; padding-top: 30px; margin-top: 20px; }
+        .detail-item { margin-bottom: 18px; font-size: 1rem; line-height: 1.6; }
+        .detail-item strong { color: var(--text-heading); display: block; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 4px; }
+        .time { font-weight: bold; font-size: 1.3rem; }
+
+        /* Interactivity / Buttons */
+        .buttons-group { margin-top: 40px; display: flex; flex-direction: column; gap: 15px; align-items: center; }
+        
+        /* Stylized "Call-to-Action" Buttons */
         .btn {
-            display: inline-block; padding: 12px 25px; background: var(--gold);
-            color: white; text-decoration: none; border-radius: 25px;
-            transition: transform 0.3s; margin-top: 20px;
+            display: inline-block; padding: 14px 40px;
+            font-size: 0.95rem; font-weight: 600; text-transform: uppercase; text-decoration: none;
+            letter-spacing: 1px; border-radius: 30px;
+            transition: all 0.4s ease-in-out;
+            width: 70%; text-align: center; cursor: pointer;
         }
-        .btn:hover { transform: scale(1.05); }
-        .lotus-icon { width: 50px; opacity: 0.6; margin-bottom: 10px; }
+        
+        /* Primary CTA: Location */
+        .btn-location {
+            background: linear-gradient(135deg, var(--primary-gold), var(--accent-gold));
+            color: white; border: none; box-shadow: 0 4px 15px rgba(198, 156, 109, 0.4);
+        }
+        .btn-location:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(198, 156, 109, 0.6); }
+
+        /* Secondary CTA: RSVP */
+        .btn-rsvp {
+            background: transparent; color: var(--primary-gold);
+            border: 1px solid var(--primary-gold);
+        }
+        .btn-rsvp:hover { background: #fffcf0; border-color: var(--accent-gold); color: var(--accent-gold); }
+
+        /* Simple Stylized Footer */
+        .contact { margin-top: 40px; border-top: 1px solid #f2f2f2; padding-top: 20px; color: #888; font-size: 0.8rem; }
+        .contact p { margin: 5px 0; }
+        .contact strong { color: #666; font-size: 0.85rem; }
+
+        /* --- MOBILE RESPONSIVENESS (Optimization) --- */
+        @media (max-width: 600px) {
+            .card { padding: 50px 20px; width: 92%; }
+            .guest-name { font-size: 1.7rem; }
+            .couple-name { font-size: 1.9rem; }
+            .major-amp { font-size: 2.5rem; }
+            .btn { width: 85%; }
+        }
     </style>
 </head>
 <body>
 
-<div class="card animate__animated animate__fadeIn">
-    <img src="https://cdn-icons-png.flaticon.com/512/2833/2833314.png" class="lotus-icon" alt="Lotus">
-    <div class="animate__animated animate__fadeInDown animate__delay-1s">
-        <p>Ayubowan!</p>
-        <div class="guest-name" id="guestName">Dear Guest,</div>
-        <p>We cordially invite you to celebrate the union of</p>
+    <div class="card animate__animated animate__zoomIn animate__slow">
+        
+        <div class="lotus-wrapper animate__animated animate__fadeInDown animate__delay-1s">
+            <svg viewBox="0 0 128 128" xml:space="preserve"><path d="M64 0c21.2 0 38.4 17.2 38.4 38.4 0 13.3-6.8 25.1-17.2 32 10.4 6.9 17.2 18.7 17.2 32C102.4 110.8 85.2 128 64 128S25.6 110.8 25.6 91.2c0-13.3 6.8-25.1 17.2-32C32.4 52.3 25.6 40.5 25.6 27.2 25.6 13.9 42.8 13.9 64 13.9z"/><path d="M64 4c20.3 0 36.8 16.5 36.8 36.8 0 12.8-6.5 24.1-16.5 30.7 10 6.6 16.5 17.9 16.5 30.7C100.8 108.3 84.3 124 64 124S27.2 108.3 27.2 88.1c0-12.8 6.5-24.1 16.5-30.7-10-6.6-16.5-17.9-16.5-30.7C27.2 16.5 43.7 4 64 4z" fill="#FFFFFF"/></svg>
+        </div>
+
+        <div class="welcome-text animate__animated animate__fadeInDown animate__delay-1s">A Celebration of Love</div>
+        
+        <div class="guest-name animate__animated animate__fadeInUp animate__delay-1s" id="guestName">A Warm Welcome</div>
+
+        <div class="invitation-body animate__animated animate__fadeInUp animate__delay-1s">
+            We cordially invite you and your family to join us on this auspicious occasion of our twin wedding ceremony.
+        </div>
+
+        <div class="couples animate__animated animate__fadeInUp animate__delay-2s">
+            
+            <div class="couple-group">
+                <span class="couple-name">Pasindu <span class="and-symbol">&</span> Isuni</span>
+                <div class="couples-divider"></div>
+            </div>
+
+            <div class="major-amp">&</div>
+
+            <div class="couple-group">
+                <span class="couple-name">Ashen <span class="and-symbol">&</span> Chathuni</span>
+                <div class="couples-divider"></div>
+            </div>
+        </div>
+
+        <div class="event-details animate__animated animate__fadeInUp animate__delay-3s">
+            <div class="detail-item">
+                <strong>Venue</strong>
+                <span>Vinrich Lake Resort, Bolgoda</span>
+            </div>
+            
+            <div class="detail-item">
+                <strong>Poruwa Ceremony</strong>
+                <span class="time">9:48 AM</span>
+            </div>
+
+            <div class="detail-item">
+                <strong>Date</strong>
+                <span>Thursday, 7th April 2026</span>
+            </div>
+        </div>
+
+        <div class="buttons-group animate__animated animate__fadeInUp animate__delay-3s">
+            <a href="https://maps.google.com/YOUR_LOCATION_LINK" class="btn btn-location" target="_blank">📍 View Location</a>
+            
+            </div>
+
+        <div class="contact animate__animated animate__fadeInUp animate__delay-4s">
+            <p>If you need assistance:</p>
+            <p><strong>Pasindu & Isuni:</strong> 0710348109</p>
+            <p><strong>Ashen & Chathuni:</strong> 0714986214</p>
+        </div>
+
     </div>
 
-    <div class="couples animate__animated animate__zoomIn animate__delay-2s">
-        <div class="couple-name">Pasindu & Isuni</div>
-        <div style="margin: 5px 0;">&</div>
-        <div class="couple-name">Ashen & Chathuni</div>
-    </div>
-
-    <div class="details animate__animated animate__fadeInUp animate__delay-3s">
-        <strong>Venue:</strong> Vinrich Lake Resort, Bolgoda<br>
-        <strong>Poruwa Ceremony:</strong> 9:48 AM<br>
-        <strong>Date:</strong> [Insert Date Here]
-        <br><br>
-        <small>Contact: 0710348109 / 0714986214</small>
-    </div>
-
-    <a href="https://maps.app.goo.gl/YourGoogleMapsLink" class="btn" target="_blank">📍 View Location</a>
-</div>
-
-<script>
-    // This script reads the URL and changes the name automatically
-    const urlParams = new URLSearchParams(window.location.search);
-    const name = urlParams.get('guest');
-    if (name) {
-        document.getElementById('guestName').innerText = "Dear " + decodeURIComponent(name) + ",";
-    }
-</script>
+    <script>
+        window.addEventListener('load', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const rawName = urlParams.get('guest');
+            if (rawName) {
+                // Decodes URL characters like %20 and sanitizes HTML
+                const cleanName = decodeURIComponent(rawName).replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                const guestNameElement = document.getElementById('guestName');
+                guestNameElement.innerText = "Dear " + cleanName + ",";
+                // Optionally make the font size smaller for very long names
+                if (cleanName.length > 20) {
+                    guestNameElement.style.fontSize = '1.4rem';
+                }
+            }
+        });
+    </script>
 
 </body>
 </html>
